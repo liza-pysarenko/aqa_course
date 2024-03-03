@@ -8,8 +8,11 @@ def is_palindrome(word):
     else:
         return '-'
 
-word = input("Input the word: ")
-print(is_palindrome(word))
+def check_palindrome():
+     word = input("Input the word: ")
+     print(is_palindrome(word))
+
+check_palindrome()
 
  # b
 def is_palindrome(word):
@@ -19,8 +22,11 @@ def is_palindrome(word):
     else:
         return '-'
 
-word = input("Input the word: ")
-print(is_palindrome(word))
+def check_palindrome():
+     word = input("Input the word: ")
+     print(is_palindrome(word))
+
+check_palindrome()
 
  # task 2
 
@@ -31,21 +37,27 @@ def find_word(text, word):
     else:
         return 'NO'
 
-text = input("Input text: ")
-word = input("Input word: ")
-print(find_word(text, word))
+def search_word():
+     text = input("Input text: ")
+     word = input("Input word: ")
+     print(find_word(text, word))
+
+search_word()
 
  # task 3
 
 def validate_mail(mail):
 
-    if "@" and "." in mail:
+    if "@" in mail and "." in mail:
         return 'YES'
     else:
         return 'NO'
 
-mail = input("Input your mail: ")
-print(validate_mail(mail))
+def check_mail():
+     mail = input("Input your mail: ")
+     print(validate_mail(mail))
+
+check_mail()
 
  # task 4
 
@@ -54,8 +66,9 @@ def last_three_symbols(text_to_list):
         print("The amount of symbols is less than 3:", len(text_to_list))
     else:
         print("The remaining three items on the list:", text_to_list[-3:])
+def check_text():
+     text = input("Input your text: ")
+     text_to_list = text.split()
+     last_three_symbols(text_to_list)
 
-text = input("Input your text: ")
-text_to_list = text.split()
-
-print(last_three_symbols(text_to_list))
+check_text()
