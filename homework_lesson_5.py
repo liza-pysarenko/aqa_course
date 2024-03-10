@@ -2,12 +2,17 @@
 
 import math
 
+class NegativeNumberError(Exception):
+    pass
+
 try:
     input = float(input("Please input number: "))
     if input < 0:
-        raise ValueError("The square root of a negative number cannot be calculated.")
+        raise NegativeNumberError("The square root of a negative number cannot be calculated.")
     square_root = math.sqrt(input)
 except ValueError as error:
+    print(f"Error: {error}")
+except NegativeNumberError as error:
     print(f"Error: {error}")
 else:
     print(f"The square root of a number {input} is equal to {square_root:.2f}")
@@ -19,13 +24,18 @@ finally:
 
 import math
 
+class NegativeNumberError(Exception):
+    pass
+
 try:
     input = float(input("Please input number: "))
     if input < 0:
-        raise ValueError("The square root of a negative number cannot be calculated.")  # не можу зрозуміти, що не так, бо коли ввожу мінусове число, то отримую одразу дві помилки "Error: 'The square root of a negative number cannot be calculated.' is not a number or contains invalid symbols."
+        raise NegativeNumberError("The square root of a negative number cannot be calculated.")
     square_root = math.sqrt(input)
 except ValueError as error:
     print(f"Error: '{error}' is not a number or contains invalid symbols.")
+except NegativeNumberError as error:
+    print(f"Error: {error}")
 except Exception:
     print(f"Something went wrong.")
 else:
@@ -39,11 +49,12 @@ finally:
 def calculator():
     while True:
         try:
-            num1 = float(input("Enter the first number (or 'stop' to exit): "))
+            num1 = input("Enter the first number (or 'stop' to exit): ")
             if num1 == 'stop':
                 print("The calculation is finished.")
-                break  # і тут не можу зрозуміти де помилка і чому вводячи stop я перехожу в Please enter valid values і знову в "Enter the first number (or 'stop' to exit): "
+                break
 
+            num1 = float(num1)
             operator = input("Enter an arithmetic operation (+, -, *, /): ")
             num2 = float(input("Enter the second number: "))
 
@@ -69,5 +80,4 @@ def calculator():
 
 if __name__ == "__main__":
     calculator()
-
 
