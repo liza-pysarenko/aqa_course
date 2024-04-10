@@ -25,21 +25,12 @@ class Ship:
     def move(self):
         return f"{self.name} is moving."
 
+
 ship = Ship("Black Pearl", 25)
 print(ship.move())
 
 
 # task 2
-
-class Ship:
-
-    def __init__(self, name: str, capacity: int):
-        self.name = name
-        self.capacity = capacity
-
-    def move(self):
-        return f"{self.name} is moving."
-
 
 class Liner(Ship):
 
@@ -50,8 +41,6 @@ class Liner(Ship):
         return "Watching the \"Pirates of the Caribbean\" movie."
 
 
-ship = Ship("Black Pearl", 25)
-print(ship.move())
 liner = Liner("Allure of the Seas", 6296)
 print(liner.move())
 print(liner.entertainment())
