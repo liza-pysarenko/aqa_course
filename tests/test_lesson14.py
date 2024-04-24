@@ -2,11 +2,6 @@ import pytest
 from store_facade import StoreFacade
 
 
-@pytest.fixture
-def store():
-    return StoreFacade()
-
-
 @pytest.mark.parametrize("model, price", [("iPhone 15", 1500), ("Google Pixel 7", 700)])
 def test_add_phone_to_catalog(store, model, price):
     phone = store.add_phone_to_catalog(model, price)
