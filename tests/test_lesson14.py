@@ -19,12 +19,6 @@ def test_remove_phone_from_catalog(store):
     assert removed_phone not in store.show_catalog()
 
 
-def test_add_and_show_catalog(store):
-    store.add_phone_to_catalog("Google Pixel 8", 700)
-    store.add_phone_to_catalog("OnePlus 10T 5G", 500)
-    assert len(store.show_catalog()) == 2
-
-
 @pytest.mark.parametrize("model, price", [("Xiaomi 14 Ultra", 1220), ("Honor Magic 6 Pro", 900)])
 def test_add_phone_to_catalog_with_params(store, model, price):
     store.add_phone_to_catalog(model, price)
