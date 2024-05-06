@@ -1,5 +1,5 @@
 import pytest
-from store_facade import StoreFacade
+from fixtures_and_marks.conftest import store
 
 
 @pytest.mark.parametrize("model, price", [("iPhone 15", 1500), ("Google Pixel 7", 700)])

@@ -1,5 +1,5 @@
 import pytest
-from store_facade import StoreFacade
+from fixtures_and_marks.store_facade import StoreFacade
 
 
 @pytest.fixture(name='store')
