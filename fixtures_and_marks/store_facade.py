@@ -1,5 +1,5 @@
-from catalog import Catalog
-from phone import Phone
+from fixtures_and_marks.catalog import Catalog
+from fixtures_and_marks.phone import Phone
 
 
 class StoreFacade:
