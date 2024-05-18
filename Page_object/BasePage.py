@@ -33,8 +33,9 @@ class BasePage:
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         return element
 
-    def find_element(self, by, locator):
-        return self.driver.find_element(by, locator)
+    def is_element_visible(self, locator):
+        condition = EC.visibility_of_element_located
+        return self.wait_until(locator, condition)
 
     def get_text(self, locator):
         condition = EC.visibility_of_element_located

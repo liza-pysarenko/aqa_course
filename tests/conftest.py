@@ -4,11 +4,13 @@ from Page_object.utils.driver_factory import driver_factory
 
 
 @pytest.fixture(scope='function')
-def driver(pytestconfig):
+def driver(pytestconfig, request):
     browser = pytestconfig.getoption('browser')
     driver = driver_factory(browser)
     driver.maximize_window()
-    driver.get(config.browser.base_url)
+    url = config.browser.base_url if not request.node.get_closest_marker('url').args[0] else \
+    request.node.get_closest_marker('url').args[0] # это можно порефакторить но для наглядности думаю должно быть понятно
+    driver.get(url)
     yield driver
     driver.quit()
 

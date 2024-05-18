@@ -7,7 +7,7 @@ from Page_object.BasePage import BasePage
 class AlertsPage(BasePage):
     def __init__(self, driver: WebDriver):
         super().__init__(driver)
-        self.browser_windows_button = self.find_element(By.XPATH,'//span[text()="Browser Windows"]')
+        self.browser_windows_button = by('//span[text()="Browser Windows"]')
         self.new_tab_button = by("id=tabButton")
 
     def click_on_browser_windows_button(self):

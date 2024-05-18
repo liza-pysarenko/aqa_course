@@ -18,41 +18,29 @@ def test_find_alerts_button(driver):
 
 def test_click_alerts_button(driver):
     home_page = HomePage(driver)
-    actions = ActionChains(driver)
-    actions.move_to_element(home_page.alerts_button).perform()
-
-    try:
-        WebDriverWait(driver, 10).until(EC.visibility_of(home_page.alerts_button))
-        driver.execute_script("arguments[0].scrollIntoView();", home_page.alerts_button)
-        home_page.alerts_button.click()
-    except TimeoutException:
-        print("Element is not found")
+    alert_btn = home_page.alert_btn_is_visible()
+    driver.execute_script("arguments[0].scrollIntoView();",
+                          alert_btn)  # лучше скрол вынести в отдельный файл и его уже использовать в шагах типа клик он
+    home_page.click_on_alerts_button()
 
 
 def test_is_tools_qa_logo_clickable(driver):
     home_page = HomePage(driver)
-    assert home_page.tools_qa_logo.is_displayed()
+    home_page.is_tools_qa_logo_visible_and_clickable()
 
 
 def test_click_tools_qa_logo(driver):
     home_page = HomePage(driver)
-    # home_page.tools_qa_logo.click()
-
-    try:
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//a[@href='https://demoqa.com']")))
-
-        home_page.tools_qa_logo.click()
-    except NoSuchElementException as e:
-        print(f"Element is not found: {e}")
+    home_page.click_on_tools_qa_logo()
 
 
-@pytest.mark.url(config.browser.alerts_url)
+@pytest.mark.url(config.browser.alerts_url)  # ты никак не используешь эту марку, сделал в конфтесте как сделать
 def test_click_on_browser_windows_button(driver):
     alerts_page = AlertsPage(driver)
-    assert alerts_page.browser_windows_button.click()
+    alerts_page.click_on_browser_windows_button()
 
 
-@pytest.mark.url(config.browser.alerts_url)
+@pytest.mark.url(config.browser.alerts_url)  # ты никак не используешь эту марку, сделал в конфтесте как сделать
 def test_click_on_new_tab_button(driver):
-     alerts_page = AlertsPage(driver)
-     assert alerts_page.new_tab_button.click()
+    alerts_page = AlertsPage(driver)
+    alerts_page.click_on_new_tab_button() # ту
