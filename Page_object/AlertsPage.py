@@ -1,6 +1,5 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from Page_object.utils.by import by
-from selenium.webdriver.common.by import By
 from Page_object.BasePage import BasePage
 
 

@@ -8,8 +8,11 @@ def driver(pytestconfig, request):
     browser = pytestconfig.getoption('browser')
     driver = driver_factory(browser)
     driver.maximize_window()
-    url = config.browser.base_url if not request.node.get_closest_marker('url').args[0] else \
-    request.node.get_closest_marker('url').args[0] # это можно порефакторить но для наглядности думаю должно быть понятно
+    url = request.node.get_closest_marker('url')
+    if url and url.args:
+        url = url.args[0]
+    else:
+        url = config.browser.base_url
     driver.get(url)
     yield driver
     driver.quit()

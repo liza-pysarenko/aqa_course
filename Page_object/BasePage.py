@@ -21,15 +21,16 @@ class BasePage:
         return wait.until_not(condition(locator))
 
     def click_element(self, locator):
-        condition = EC.element_to_be_clickable
-        element = self.wait_until(locator, condition)
+        element = self.scroll_into_view(locator)
+        self.wait_until(element, EC.element_to_be_clickable)
         element.click()
 
     def is_element_clickable(self, locator):
         condition = EC.element_to_be_clickable
         return self.wait_until(locator, condition)
 
-    def scroll_into_view(self, element: WebElement):
+    def scroll_into_view(self, locator: tuple):
+        element = self.wait_until(locator, EC.presence_of_element_located)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         return element
 
@@ -37,7 +38,9 @@ class BasePage:
         condition = EC.visibility_of_element_located
         return self.wait_until(locator, condition)
 
-    def get_text(self, locator):
-        condition = EC.visibility_of_element_located
-        element = self.wait_until(locator, condition)
-        return element.text
+    def browser_has_tabs_count(self, count: int):
+        assert len(self.driver.window_handles) == count
+
+    def switch_to_new_window(self):
+        self.driver.switch_to.new_window()
+        self.driver.switch_to.default_content()
