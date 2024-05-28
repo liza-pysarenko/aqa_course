@@ -2,5 +2,4 @@ pytest==8.1.1
 requests==2.31.0
 selenium==4.20.0
 webdriver-manager==4.0.1
-by~=0.0.4
 pydantic-settings==2.2.1
